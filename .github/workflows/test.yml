@@ -4,5 +4,6 @@ jobs:
   check_install:
     runs-on: ubuntu-latest
     steps:
-      - id: Check and Install
+      - id: Install
+        name: Check & Install
         uses: ./
