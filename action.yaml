@@ -5,10 +5,8 @@ runs:
   steps:
       - name: Check Terraform
         run: |
-        if [ ! -x "$(command -v terraform)" ]; then
           echo "* Terraform wil be installed."
           brew install terraform
-        fi
-        terraform --version
+          terraform --version
 
         
