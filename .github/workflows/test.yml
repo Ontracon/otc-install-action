@@ -1,0 +1,6 @@
+name: GitHub Actions Demo
+on: [push]
+jobs:
+  steps:
+    - name: Check & install
+      uses: ./

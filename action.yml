@@ -1,0 +1,16 @@
+name: 'Check & install Toolset'
+description: 'Check & Install necessary toolset'
+inputs:
+outputs:
+runs:
+  using: "composite"
+  steps:
+      - name: Check Terraform
+        run: |
+        if [ ! -x "$(command -v terraform)" ]; then
+          echo "* Terraform wil be installed."
+          brew install terraform
+        fi
+        terraform --terraform_module_version
+
+        
