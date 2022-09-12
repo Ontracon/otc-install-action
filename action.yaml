@@ -1,7 +1,5 @@
 name: 'Check & install Toolset'
 description: 'Check & Install necessary toolset'
-inputs:
-outputs:
 runs:
   using: "composite"
   steps:
@@ -11,6 +9,6 @@ runs:
           echo "* Terraform wil be installed."
           brew install terraform
         fi
-        terraform --terraform_module_version
+        terraform --version
 
         
