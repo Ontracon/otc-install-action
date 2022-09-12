@@ -2,5 +2,5 @@ name: GitHub Actions Demo
 on: [push]
 jobs:
   steps:
-    - name: Check & install
-      uses: ./
+    - id: Check & Install
+      uses: Ontracon/otc-install-action@main
