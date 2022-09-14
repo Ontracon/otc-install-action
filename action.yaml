@@ -3,7 +3,7 @@ description: 'Check & Install necessary toolset'
 runs:
   using: "composite"
   steps:
-      - name: Check Terraform
+      - name: Check & Install Terraform
         run: |
           echo "- Terraform"
           if ! command -v terraform &> /dev/null; then
@@ -12,5 +12,13 @@ runs:
           fi
           terraform --version
         shell: bash
-
+      - name: Check & Install tflint
+        run: |
+          echo "- tflint"
+          if ! command -v tflint &> /dev/null; then
+          echo "* tflint wil be installed."
+          curl -s <https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh> | bash
+          fi
+          tflint --version
+        shell: bash
         
