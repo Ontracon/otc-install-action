@@ -8,5 +8,5 @@ Installs the following packages when not installed:
 -   tflint
 -   inspec
 -   checkov
--   repl (open)
+-   rpl
 -   xml tools (open)
