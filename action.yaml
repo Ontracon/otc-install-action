@@ -21,4 +21,12 @@ runs:
           fi
           tflint --version
         shell: bash
-        
+      - name: Check & Install inspec
+        run: |
+          echo "- inspec:"
+          if ! command -v inspec &> /dev/null; then
+          echo "  * inspec wil be installed."
+          curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec
+          fi
+          tflint --version
+        shell: bash        
