@@ -6,7 +6,7 @@ runs:
       - name: Check Terraform
         run: |
           echo "- Terraform"
-          if ! command -v terraform &> /dev/null then
+          if ! command -v terraform &> /dev/null; then
           echo "* Terraform wil be installed."
           brew install terraform
           fi
