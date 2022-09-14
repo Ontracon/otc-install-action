@@ -29,4 +29,13 @@ runs:
           curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec
           fi
           tflint --version
+        shell: bash
+      - name: Check & Install inspec
+        run: |
+          echo "- checkov:"
+          if ! command -v checkov &> /dev/null; then
+          echo "  * checkov wil be installed."
+          sudo pip3 install checkov
+          fi
+          checkov --version
         shell: bash        
