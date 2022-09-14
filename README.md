@@ -1,8 +1,12 @@
 # otc-install-action
 
-Install necessary tools on runner if not preinstalled
+Install necessary tools on runner if not preinstalled.
 
-Supports:
+Installs the following packages when not installed:
 
+-   terraform
+-   tflint
+-   inspec
 -   checkov
--   azure cli
+-   repl (open)
+-   xml tools (open)

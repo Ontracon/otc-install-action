@@ -38,4 +38,13 @@ runs:
           sudo pip3 install checkov
           fi
           checkov --version
-        shell: bash        
+        shell: bash
+      - name: Check & Install rpl
+        run: |
+          echo "- rpl:"
+          if ! command -v rpl &> /dev/null; then
+          echo "  * rpl wil be installed."
+          sudo apt-get -y install rpl
+          fi
+          rpl --version
+        shell: bash       
