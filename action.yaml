@@ -5,19 +5,19 @@ runs:
   steps:
       - name: Check & Install Terraform
         run: |
-          echo "- Terraform"
+          echo "- Terraform:"
           if ! command -v terraform &> /dev/null; then
-          echo "* Terraform wil be installed."
+          echo "  * Terraform wil be installed."
           brew install terraform
           fi
           terraform --version
         shell: bash
       - name: Check & Install tflint
         run: |
-          echo "- tflint"
+          echo "- tflint:"
           if ! command -v tflint &> /dev/null; then
-          echo "* tflint wil be installed."
-          curl -s <https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh> | bash
+          echo "  * tflint wil be installed."
+          curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
           fi
           tflint --version
         shell: bash
