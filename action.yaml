@@ -8,5 +8,6 @@ runs:
           echo "* Terraform wil be installed."
           brew install terraform
           terraform --version
+        shell: bash
 
         
