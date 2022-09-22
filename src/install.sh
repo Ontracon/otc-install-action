@@ -10,7 +10,7 @@ get_opts "$@"
 
 function install_terraform ()
 {
-    echo "- Terraform checks"
+    echo "- Terraform checks:"
     if ! command -v terraform &> /dev/null || [ "$OVERRIDE" == "true" ];  then
         echo -e "  * ${INF}Terraform${NC}: terraform could not be found, installing."
         unzip -u $SCRIPT_DIRECTORY/install/terraform_1.3.0_linux_amd64.zip -d /tmp/ &> /dev/null
@@ -40,7 +40,7 @@ function install_terraform ()
 
 function install_tflint ()
 {
-  echo "- TFlint checks"
+  echo "- TFlint checks:"
     if ! command -v tflint &> /dev/null || [ "$OVERRIDE" == "true" ]; then
         echo -e "  * ${INF}tflint:${NC} tflint could not be found, installing."
         unzip -u $SCRIPT_DIRECTORY/install/tflint_linux_amd64.zip -d /tmp/ &> /dev/null
