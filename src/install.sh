@@ -132,7 +132,7 @@ function install_xmllint ()
   echo "- XMLlint checks:"
     if ! command -v xmllint &> /dev/null || [ "$OVERRIDE" == "true" ]; then
         echo -e "  * ${INF}XMLlint:${NC} xmllint could not be found, installing."
-        apt-get -y install libxml2-utils
+        sudo apt-get -y install libxml2-utils
     fi
     xmllint --version &> /dev/null
     if [[ $? -ne 0 ]]; then
