@@ -127,8 +127,25 @@ else
     echo -e "  * ${OK}Inspec:${NC} `which inspec` - `inspec --version | head -n 1`"
 fi
 }
+function install_xmllint ()
+{
+  echo "- XMLlint checks:"
+    if ! command -v xmllint &> /dev/null || [ "$OVERRIDE" == "true" ]; then
+        echo -e "  * ${INF}XMLlint:${NC} xmllint could not be found, installing."
+        apt-get -y install libxml2-utils
+    fi
+    xmllint --version &> /dev/null
+    if [[ $? -ne 0 ]]; then
+    echo -e "  * ${ERR}Error: xmllint not found!${NC}"
+    exit 1
+else
+    echo -e "  * ${OK}XMLlint:${NC} `which xmllint`"
+fi
+}
+
 
 install_terraform
 install_tflint
 install_checkov
 install_inspec
+install_xmllint

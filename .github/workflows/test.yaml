@@ -19,6 +19,10 @@ jobs:
           OVERRIDE_LOCAL_VERSION: 'true'
       - name: Check necessary tools
         run: |
+          terraform --version
+          tflint --version
+          inspec --version
+          checkov --version
           jq --version
           xmllint --version
         shell: bash
