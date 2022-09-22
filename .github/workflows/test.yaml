@@ -9,7 +9,10 @@ jobs:
       - id: Install
         name: Test - Check & Install Toolset without override
         uses: ./
-      - id: Install_ovveride
+      - id: Install_test
+        name: Test - Check & Install Toolset when exists
+        uses: ./
+      - id: Install_override
         name: Test - Check & Install Toolset with override
         uses: ./
         with:
