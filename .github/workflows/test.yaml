@@ -25,4 +25,5 @@ jobs:
           checkov --version
           jq --version
           xmllint --version
+          rpl --version
         shell: bash

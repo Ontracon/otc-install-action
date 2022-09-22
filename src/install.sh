@@ -100,7 +100,7 @@ function install_terraform ()
 function install_checkov ()
 {
   echo "- Checkov checks:"
-    if ! command -v checkov &> /dev/null || [ "$OVERRIDE" == "true" ]; then
+    if ! command -v checkov &> /dev/null; then
         echo -e "  * ${INF}Checkov:${NC} checkov could not be found, installing."
         sudo pip3 install --upgrade checkov requests &> /dev/null
     fi
@@ -115,7 +115,7 @@ fi
 function install_inspec ()
 {
   echo "- Inspec checks:"
-    if ! command -v inspec &> /dev/null || [ "$OVERRIDE" == "true" ]; then
+    if ! command -v inspec &> /dev/null; then
         echo -e "  * ${INF}Inspec:${NC} inspec could not be found, installing."
         curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec &> /dev/null
     fi
@@ -130,7 +130,7 @@ fi
 function install_xmllint ()
 {
   echo "- XMLlint checks:"
-    if ! command -v xmllint &> /dev/null || [ "$OVERRIDE" == "true" ]; then
+    if ! command -v xmllint &> /dev/null; then
         echo -e "  * ${INF}XMLlint:${NC} xmllint could not be found, installing."
         sudo apt-get -y install libxml2-utils &> /dev/null
     fi
@@ -146,7 +146,7 @@ fi
 function install_rpl ()
 {
   echo "- RPL checks:"
-    if ! command -v rpl &> /dev/null || [ "$OVERRIDE" == "true" ]; then
+    if ! command -v rpl &> /dev/null; then
         echo -e "  * ${INF}RPL:${NC} rpl could not be found, installing."
         sudo apt-get -y install rpl &> /dev/null
     fi
