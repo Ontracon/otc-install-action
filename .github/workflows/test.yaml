@@ -8,8 +8,8 @@ jobs:
       - id: Install
         name: Test - Check & Install Toolset without override
         uses: ./
-      - id: Install
-        name: Test - Check & Install Toolset without override
+      - id: Install_ovveride
+        name: Test - Check & Install Toolset with override
         uses: ./
         with:
           OVERRIDE_LOCAL_VERSION: 'true'
