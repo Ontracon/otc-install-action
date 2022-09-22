@@ -9,10 +9,10 @@ runs:
   using: "composite"
   steps:
       - name: Check & Install toolset
-        if: ${{ inputs.OVERRIDE_LOCAL_VERSION}} == 'false'
+        if: ${{ inputs.OVERRIDE_LOCAL_VERSION}} == false
         run: bash ${{ github.action_path }}/src/install.sh
         shell: bash
       - name: Check & Install toolset with local override
-        if: ${{ inputs.OVERRIDE_LOCAL_VERSION}} == 'true'
+        if: ${{ inputs.OVERRIDE_LOCAL_VERSION}} == true
         run: bash ${{ github.action_path }}/src/install.sh -o
         shell: bash
