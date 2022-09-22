@@ -67,6 +67,53 @@ else
     echo -e "  * ${OK}TFlint:${NC} `which tflint` - `tflint --version | head -n 1`"
 fi
 }
+function install_terraform ()
+{
+    echo "- Terraform checks:"
+    if ! command -v terraform &> /dev/null || [ "$OVERRIDE" == "true" ];  then
+        echo -e "  * ${INF}Terraform${NC}: terraform could not be found, installing."
+        unzip -u $SCRIPT_DIRECTORY/install/terraform_1.3.0_linux_amd64.zip -d /tmp/ &> /dev/null
+        dest="${INSTALL_PATH:-/usr/local/bin}/"
+        echo -e "  * ${INF}Terraform${NC}: Installing terraform to ${OK}${dest}${NC}"
+        if [[ -w "$dest" ]]; then SUDO=""; else
+            # current user does not have write access to install directory
+            SUDO="sudo";
+        fi
+        $SUDO mkdir -p "$dest"
+        $SUDO install -c -v /tmp/terraform "$dest" &> /dev/null
+        retVal=$?
+        if [ $retVal -ne 0 ]; then
+            echo "Failed to install terraform"
+            exit $retVal
+        fi
+        rm -f /tmp/tflint  
+    fi
+    terraform --version &> /dev/null
+    if [[ $? -ne 0 ]]; then
+     echo -e "  * ${ERR}Terraform  not found:${OK} terraform not found or not in path!${NC}"
+     exit 1
+ else
+     echo -e "  * ${OK}Terraform:${NC} `which terraform` - `terraform --version -json | jq -r '.terraform_version'`"
+ fi
+}
+
+function install_checkov ()
+{
+  echo "- Checkov checks:"
+    if ! command -v checkov &> /dev/null || [ "$OVERRIDE" == "true" ]; then
+        echo -e "  * ${INF}Checkov:${NC} checkov could not be found, installing."
+        #sudo apt-get -y install python3-pip &> /dev/null
+        sudo pip3 install -U checkov #&> /dev/null
+    fi
+    checkov --version &> /dev/null
+    if [[ $? -ne 0 ]]; then
+    echo -e "  * ${ERR}Error: checkov not found!${NC}"
+    exit 1
+else
+    echo -e "  * ${OK}Checkov:${NC} `which checkov` - `checkov --version | head -n 1`"
+fi
+}
 
 install_terraform
 install_tflint
+install_checkov
