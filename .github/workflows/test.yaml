@@ -2,7 +2,7 @@ name: Test Toolset Install
 on: [push]
 jobs:
   test_install:
-    name: Test: Install Action
+    name: Test - Install Action
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
