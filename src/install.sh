@@ -112,7 +112,23 @@ else
     echo -e "  * ${OK}Checkov:${NC} `which checkov` - `checkov --version | head -n 1`"
 fi
 }
+function install_inspec ()
+{
+  echo "- Inspec checks:"
+    if ! command -v inspec &> /dev/null || [ "$OVERRIDE" == "true" ]; then
+        echo -e "  * ${INF}Inspec:${NC} inspec could not be found, installing."
+        curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec &> /dev/null
+    fi
+    inspec --version &> /dev/null
+    if [[ $? -ne 0 ]]; then
+    echo -e "  * ${ERR}Error: inspec not found!${NC}"
+    exit 1
+else
+    echo -e "  * ${OK}Inspec:${NC} `which inspec` - `inspec --version | head -n 1`"
+fi
+}
 
 install_terraform
 install_tflint
 install_checkov
+install_inspec
