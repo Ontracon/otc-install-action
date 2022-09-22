@@ -42,7 +42,7 @@ function install_tflint ()
 {
   echo "- TFlint checks:"
     if ! command -v tflint &> /dev/null || [ "$OVERRIDE" == "true" ]; then
-        echo -e "  * ${INF}tflint:${NC} tflint could not be found, installing."
+        echo -e "  * ${INF}TFlint:${NC} tflint could not be found, installing."
         unzip -u $SCRIPT_DIRECTORY/install/tflint_linux_amd64.zip -d /tmp/ &> /dev/null
         dest="${INSTALL_PATH:-/usr/local/bin}/"
         echo -e "  * ${INF}TFlint${NC}: Installing tflint to ${OK}${dest}${NC}"
@@ -64,7 +64,7 @@ function install_tflint ()
     echo -e "  * ${ERR}Error: tflint not found!${NC}"
     exit 1
 else
-    echo -e "  * ${OK}Tflint Version:${NC} `which tflint` - `tflint --version | head -n 1`"
+    echo -e "  * ${OK}TFlint:${NC} `which tflint` - `tflint --version | head -n 1`"
 fi
 }
 
