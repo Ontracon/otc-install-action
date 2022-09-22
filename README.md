@@ -17,7 +17,21 @@ Installs the following packages when not installed:
 
 ## Basic usage
 
+```yaml
+- id: Install
+  name: Test - Check & Install Toolset without override
+  uses: Ontracon/otc-install-action@main
+```
+
 ## Usage with override Settings
+
+```yaml
+- id: Install_override
+  name: Test - Check & Install Toolset with override
+  uses: Ontracon/otc-install-action@main
+  with:
+    OVERRIDE_LOCAL_VERSION: 'true'
+```
 
 ## GitHub Action inputs
 
