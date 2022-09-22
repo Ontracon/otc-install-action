@@ -7,6 +7,7 @@
 SCRIPT_DIRECTORY=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 source "$SCRIPT_DIRECTORY/functions.sh"
 get_opts "$@"
+echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
 
 function install_terraform ()
 {
