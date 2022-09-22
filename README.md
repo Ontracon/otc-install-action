@@ -23,6 +23,6 @@ Installs the following packages when not installed:
 
 In the following table you can find the GitHub Action Inputs and the mapping to the shell command line switches.
 
-| GitHub Action Inputs   | Description                                                                            | Mandatory | Maps to |
-| ---------------------- | -------------------------------------------------------------------------------------- | --------- | ------- |
-| OVERRIDE_LOCAL_VERSION | Overrides the local Version of terraform, tflint an uses the version from /src/install | ✗         | -o      |
+| GitHub Action Inputs   | Description                                                                             | Mandatory | Maps to |
+| ---------------------- | --------------------------------------------------------------------------------------- | --------- | ------- |
+| OVERRIDE_LOCAL_VERSION | Overrides the local Version of terraform, tflint and uses the version from /src/install | ✗         | -o      |
