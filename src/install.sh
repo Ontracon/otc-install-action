@@ -102,8 +102,7 @@ function install_checkov ()
   echo "- Checkov checks:"
     if ! command -v checkov &> /dev/null || [ "$OVERRIDE" == "true" ]; then
         echo -e "  * ${INF}Checkov:${NC} checkov could not be found, installing."
-        #sudo apt-get -y install python3-pip &> /dev/null
-        sudo pip3 install -U checkov #&> /dev/null
+        sudo pip3 install -U checkov &> /dev/null
     fi
     checkov --version &> /dev/null
     if [[ $? -ne 0 ]]; then
