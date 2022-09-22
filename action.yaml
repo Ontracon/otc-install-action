@@ -12,8 +12,7 @@ runs:
         if: ${{ inputs.ARM_TENANT_ID}} == false
         run: bash ${{ github.action_path }}/src/install.sh
         shell: bash
-  steps:
-      - name: Check & Install Terraform
+      - name: Check & Install toolset with local override
         if: ${{ inputs.ARM_TENANT_ID}} == true
         run: bash ${{ github.action_path }}/src/install.sh -o
         shell: bash
