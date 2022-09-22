@@ -1,6 +1,6 @@
 # otc-install-action
 
-Install necessary tools on runner if not preinstalled.
+Install necessary tools on github runner (ubuntu-latest) if not preinstalled.
 
 Installs the following packages when not installed:
 
@@ -9,4 +9,4 @@ Installs the following packages when not installed:
 -   inspec
 -   checkov
 -   rpl
--   xml tools (open)
+-   xml tools

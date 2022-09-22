@@ -132,7 +132,7 @@ function install_xmllint ()
   echo "- XMLlint checks:"
     if ! command -v xmllint &> /dev/null || [ "$OVERRIDE" == "true" ]; then
         echo -e "  * ${INF}XMLlint:${NC} xmllint could not be found, installing."
-        sudo apt-get -y install libxml2-utils
+        sudo apt-get -y install libxml2-utils &> /dev/null
     fi
     xmllint --version &> /dev/null
     if [[ $? -ne 0 ]]; then
@@ -143,9 +143,25 @@ else
 fi
 }
 
+function install_rpl ()
+{
+  echo "- RPL checks:"
+    if ! command -v rpl &> /dev/null || [ "$OVERRIDE" == "true" ]; then
+        echo -e "  * ${INF}RPL:${NC} rpl could not be found, installing."
+        sudo apt-get -y install rpl &> /dev/null
+    fi
+    xmllint --version &> /dev/null
+    if [[ $? -ne 0 ]]; then
+    echo -e "  * ${ERR}Error: rpl not found!${NC}"
+    exit 1
+else
+    echo -e "  * ${OK}RPL:${NC} `which rpl` - `rpl --version | head -n 1`"
+fi
+}
 
 install_terraform
 install_tflint
 install_checkov
 install_inspec
 install_xmllint
+install_rpl
