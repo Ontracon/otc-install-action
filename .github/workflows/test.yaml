@@ -19,6 +19,6 @@ jobs:
           OVERRIDE_LOCAL_VERSION: 'true'
       - name: Check necessary tools
         run: |
-        jq --version
-        xmllint --version
+          jq --version
+          xmllint --version
         shell: bash
