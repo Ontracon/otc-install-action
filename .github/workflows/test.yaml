@@ -1,8 +1,8 @@
 name: GitHub Test Toolset Install
 on: [push]
 jobs:
-  check_install:
-    name: Test Install Action
+  test_install:
+    name: Test: Install Action
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
