@@ -1,5 +1,17 @@
 name: Test Toolset Install
-on: [push]
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - '*'         # matches every branch that doesn't contain a '/'
+      - '*/*'       # matches every branch containing a single '/'
+      - '**'        # matches every branch
+    paths:
+
+      - 'src/*'
+      - 'action.yml'
+      - '.github/workflows/test.yml'
 jobs:
   test_install:
     name: Test - Install Action

@@ -1,0 +1,7 @@
+# Ignnore local files
+**/*.local
+**/*.local/
+**/*.tmp
+
+# Crash log files
+crash.log
