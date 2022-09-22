@@ -1,50 +1,19 @@
 name: 'Check & install Toolset'
 description: 'Check & Install necessary toolset'
+inputs:
+  OVERRIDE_LOCAL_VERSION:
+    description: 'Name for Results (Publish Name)'
+    required: false
+    default: 'false'
 runs:
   using: "composite"
   steps:
+      - name: Check & Install toolset
+        if: ${{ inputs.ARM_TENANT_ID}} == false
+        run: bash ${{ github.action_path }}/src/install.sh
+        shell: bash
+  steps:
       - name: Check & Install Terraform
-        run: |
-          echo "- Terraform:"
-          if ! command -v terraform &> /dev/null; then
-          echo "  * Terraform wil be installed."
-          brew install terraform
-          fi
-          terraform --version
+        if: ${{ inputs.ARM_TENANT_ID}} == true
+        run: bash ${{ github.action_path }}/src/install.sh -o
         shell: bash
-      - name: Check & Install tflint
-        run: |
-          echo "- tflint:"
-          if ! command -v tflint &> /dev/null; then
-          echo "  * tflint wil be installed."
-          curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
-          fi
-          tflint --version
-        shell: bash
-      - name: Check & Install inspec
-        run: |
-          echo "- inspec:"
-          if ! command -v inspec &> /dev/null; then
-          echo "  * inspec wil be installed."
-          curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec
-          fi
-          tflint --version
-        shell: bash
-      - name: Check & Install inspec
-        run: |
-          echo "- checkov:"
-          if ! command -v checkov &> /dev/null; then
-          echo "  * checkov wil be installed."
-          sudo pip3 install checkov
-          fi
-          checkov --version
-        shell: bash
-      - name: Check & Install rpl
-        run: |
-          echo "- rpl:"
-          if ! command -v rpl &> /dev/null; then
-          echo "  * rpl wil be installed."
-          sudo apt-get -y install rpl
-          fi
-          rpl --version
-        shell: bash       
